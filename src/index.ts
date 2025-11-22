@@ -6,6 +6,8 @@ import { listIssues } from './commands/issue/list';
 import { viewIssue } from './commands/issue/view';
 import { handleComments } from './commands/issue/comment';
 import { updateIssue } from './commands/issue/update';
+import { createIssue } from './commands/issue/create';
+import { listTeams } from './commands/team/list';
 
 const program = new Command();
 
@@ -22,6 +24,20 @@ auth
   .action(login);
 
 const issue = program.command('issue').description('Manage issues');
+
+issue
+  .command('create')
+  .description('Create a new issue')
+  .requiredOption('--title <title>', 'Issue title')
+  .requiredOption('--team <team>', 'Team name')
+  .option('--description <description>', 'Issue description')
+  .option('--status <status>', 'Issue status (by status name)')
+  .option('--assignee <email>', 'Issue assignee (by email)')
+  .option('--priority <priority>', 'Issue priority (0-4: 0=None, 1=Urgent, 2=High, 3=Medium, 4=Low)')
+  .option('--labels <labels...>', 'Issue labels (by label names)')
+  .option('--estimate <estimate>', 'Issue estimate (story points)')
+  .option('--parent <issue-id>', 'Parent issue ID (for creating sub-issues)')
+  .action(createIssue);
 
 issue
   .command('list')
@@ -66,5 +82,12 @@ comment
   .description('Create a comment on an issue')
   .requiredOption('--body <text>', 'Comment body')
   .action((issueId, options) => handleComments(issueId, { add: options.body }));
+
+const team = program.command('team').description('Manage teams');
+
+team
+  .command('list')
+  .description('List all teams')
+  .action(listTeams);
 
 program.parse();
