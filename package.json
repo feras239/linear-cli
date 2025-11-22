@@ -1,6 +1,6 @@
 {
   "name": "@scmfury/linear-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A modern command-line interface for Linear with advanced filtering, sorting, and native color support",
   "main": "dist/index.js",
   "bin": {
